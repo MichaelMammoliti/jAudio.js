@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jAudio.js</title>
+  <link rel="stylesheet" type="text/css" href="resources/css/main.css">
+</head>
+<body>
+
+<div class='background' id='background'>&nbsp;</div>
+  <div id='player'>
+
+    <audio id='mytrack' src=''>&nbsp;</audio>
+
+    <div id='artwork'>&nbsp;</div>
+
+    <div id='tracks'>
+      <div trackartist='Tobu & Syndec' trackname='Dusk' trackartwork='01.jpg'></div>
+      <div trackartist='Disfigure' trackname='Blank' trackartwork='02.jpg'></div>
+      <div trackartist='Alan Walker' trackname='Fade' trackartwork='03.jpg'></div>
+    </div>
+
+    <div id='ui'>
+
+      <div id="time">
+        <span id='elapsedtime'>00:00</span>
+        <span id='totaltime'>00:00</span>
+      </div>
+
+      <div id='progressbar'>
+        <div><span id='pointer'>&nbsp;</span></div>
+      </div>
+
+      <div id='controls'>
+        <button id='prev' class='control'>&nbsp;</button>
+        <button id='play' class='control'>&nbsp;</button>
+        <button id='stop' class='control'>&nbsp;</button>
+        <button id='next' class='control'>&nbsp;</button>
+      </div>
+
+    </div> <!-- UI -->
+
+  </div> <!-- player -->
+
+  <script src='vendors/jquery/jquery-2.1.3.js'></script>
+  <script src='vendors/jaudio/jaudio.js'></script>
+
+</body>
+</html>
