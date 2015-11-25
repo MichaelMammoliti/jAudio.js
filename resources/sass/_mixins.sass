@@ -1,0 +1,32 @@
+=transition($el: all, $time: $transition-duration)
+  transition: #{$el} #{$time} ease 0s
+
+=clearfix
+  display: table
+  &:after
+    content: " "
+    display: block
+    width: 100%
+    clear: both
+
+=absolute-v-center
+  position: absolute
+  top: 50%
+  transform: translate(0, -50%)
+=absolute-h-center
+  position: absolute
+  left: 50%
+  transform: translate(-50%, 0)
+=absolute-center
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+=before
+  display: block
+  content: " "
+
+=bg
+  background-size: cover
+  background-position: center center

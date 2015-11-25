@@ -1,0 +1,215 @@
+html
+  background: #383B44
+
+.jAudio--player
+  +clearfix
+  overflow: hidden
+  background: #fff
+  box-shadow: 0 0 5px rgba(#000, .8)
+  margin: 100px auto
+  width: 352px
+
+  .jAudio--ui
+    position: relative
+    width: 100%
+
+  .jAudio--status-bar
+    width: 100%
+    z-index: 1
+    position: relative
+    padding: 100px $spacing $spacing $spacing
+    +clearfix
+
+  .jAudio--controls
+    width: 100%
+    +clearfix
+    background: #fafafa
+    ul
+      +clearfix
+      overflow: hidden
+      width: 100%
+    li
+      position: relative
+      width: 33.3333%
+      height: $spacing*2.5
+      line-height: $spacing*2.5
+
+  .jAudio--thumb
+    position: absolute
+    top: 0
+    left: 0
+    height: 100%
+    width: 100%
+    +bg
+
+  .jAudio--time
+    +clearfix
+    width: 100%
+    *
+      width: 50%
+      display: block
+      float: left
+      color: #fff
+      text-shadow: 0 1px 1px #000
+      font-size: .9rem
+    .jAudio--time-elapsed
+      text-align: left
+    .jAudio--time-total
+      text-align: right
+
+  .jAudio--details
+    *
+      color: #fff
+      text-shadow: 0 1px 1px #000
+      font-size: 1.2rem
+      &:first-of-type
+        font-weight: bold
+    p
+      width: 100%
+      span
+        display: block
+
+  .jAudio--progress-bar
+    margin: $spacing/1.5 0
+    .jAudio--progress-bar-wrapper
+      width: 100%
+      position: relative
+      background: rgba(#fff, .3)
+      cursor: pointer
+      border-radius: $progressbar-dimensions
+      overflow: hidden
+
+    .jAudio--progress-bar-played
+      height: $progressbar-dimensions
+      background: $color
+      position: relative
+      border-radius: $progressbar-dimensions
+
+    .jAudio--progress-bar-pointer
+      height: $progressbar-dimensions
+      width: $progressbar-dimensions
+      border-radius: 50%
+      position: absolute
+      right: 0
+      background: #fff
+
+  .jAudio--playlist
+    background: #fff
+    .jAudio--playlist-item
+      display: block
+      width: 100%
+      padding: $spacing/1.5 $spacing
+      +clearfix
+      &.active
+        background: $color - 10
+        border-bottom-color: $color - 10
+        *
+          color: #fff
+      &:not(.active)
+        &:hover
+          background: #fafafa
+
+      &:last-of-type
+        border: 0
+        margin-bottom: 0
+
+    .jAudio--playlist-thumb
+      float: left
+      margin-right: $spacing/3
+      +clearfix
+      img
+        height: $spacing*1.2
+        width: $spacing*1.2
+        border-radius: 50%
+        float: left
+        margin-right: $spacing/4
+
+    .jAudio--playlist-meta-text
+      h4
+        font-size: 1rem
+        color: #000
+      p
+        font-size: .8rem
+
+//icons
+$controls-border-top: $controls-size - ($controls-size / ($controls-size/10))
+
+.btn
+  position: relative
+  overflow: hidden
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: transparent
+  border: 0
+  span
+    position: absolute
+    display: table
+    height: $controls-size
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    overflow: hidden
+    &:before, &:after
+      +before
+      height: 0
+      float: left
+      border-color: transparent
+      border-style: solid
+  &:active
+    background: #f5f5f5
+
+#btn-prev, #btn-next, #btn-play
+  span
+    &:before, &:after
+      border-top: $controls-size/2 solid transparent
+      border-bottom: $controls-size/2 solid transparent
+
+
+#btn-prev
+  span
+    &:before, &:after
+      border-right: $controls-size solid #ddd
+      border-left: 0
+  &:active
+    span
+      &:before, &:after
+        border-right-color: $color !important
+
+#btn-next
+  span
+    &:before, &:after
+      border-left: $controls-size solid #ddd
+      border-right: 0
+  &:active
+    span
+      &:before, &:after
+        border-left-color: $color !important
+
+#btn-play
+  span
+    &:before
+      border-left: $controls-size solid #ddd
+      border-right: 0
+    &:after
+      display: none
+  &:active, &.active
+    span
+      &:before
+        border-left-color: $color !important
+
+#btn-pause
+  span
+    &:before, &:after
+      width: $controls-border-top
+      height: $controls-size
+      background: $color
+      border: 0
+    &:before
+      margin-right: $controls-border-top
+    &:active, &.active
+      &:before, &:after
+        background: #fff
+        margin-right: $controls-border-top
