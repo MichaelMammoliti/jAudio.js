@@ -1,79 +1,63 @@
- <!--
-  # ----- Script info:
-  - Author: Michael Mammoliti
-  - Name: jAudio.js
-  - Version: 0.2
-  - js dipendencies: jQuery
-  - Release date: 25 November 2015
-  - GitHub: https://github.com/MichaelMammoliti/jAudio.js
-
-  # ----- Contact info
-  - GitHub: https://github.com/MichaelMammoliti
-  - Mail: mammoliti.michael@gmail.com
-  - Twitter: @MichMammoliti
-
-  # ----- License Info
-  - Released under the GPL v3 license.
--->
-
 <!DOCTYPE html>
 <html>
-<head>
-  <title>jAudio.js</title>
 
-  <link rel="stylesheet" type="text/css" href="resources/css/main.min.css">
+  <head>
+    <title>jAudio.js</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/main.min.css">
+  </head>
 
-</head>
-<body>
 
-  <div class='jAudio--player'>
+  <body>
 
-    <audio></audio>
+    <div class='jAudio'>
 
-    <div class='jAudio--ui'>
+      <audio></audio>
 
-      <div class='jAudio--thumb'></div>
+      <div class='jAudio--ui'>
 
-      <div class='jAudio--status-bar'>
+        <div class='jAudio--thumb'></div>
 
-        <div class='jAudio--details'></div>
-        <div class='jAudio--volume-bar'></div>
+        <div class='jAudio--status-bar'>
 
-        <div class='jAudio--progress-bar'>
-          <div class='jAudio--progress-bar-wrapper'>
-            <div class='jAudio--progress-bar-played'>
-              <span class='jAudio--progress-bar-pointer'></span>
+          <div class='jAudio--details'></div>
+          <div class='jAudio--volume-bar'></div>
+
+          <div class='jAudio--progress-bar'>
+            <div class='jAudio--progress-bar-wrapper'>
+              <div class='jAudio--progress-bar-played'>
+                <span class='jAudio--progress-bar-pointer'></span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class='jAudio--time'>
-          <span class='jAudio--time-elapsed'>00:00</span>
-          <span class='jAudio--time-total'>00:00</span>
+          <div class='jAudio--time'>
+            <span class='jAudio--time-elapsed'>00:00</span>
+            <span class='jAudio--time-total'>00:00</span>
+          </div>
+
         </div>
 
       </div>
 
+
+      <div class='jAudio--playlist'>
+      </div>
+
+      <div class='jAudio--controls'>
+        <ul>
+          <li><button class='jAudio--control jAudio--control-prev' data-action='prev'><span></span></button></li>
+          <li><button class='jAudio--control jAudio--control-play' data-action='play'><span></span></button></li>
+          <li><button class='jAudio--control jAudio--control-next' data-action='next'><span></span></button></li>
+        </ul>
+      </div>
+
     </div>
 
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+    <script src='resources/js/jaudio.min.js'></script>
+    <script src='resources/js/main.js'></script>
 
-    <div class='jAudio--playlist'>
-    </div>
+  </body>
 
-    <div class='jAudio--controls'>
-      <ul>
-        <li><button class='btn' data-action='prev' id='btn-prev'><span></span></button></li>
-        <li><button class='btn' data-action='play' id='btn-play'><span></span></button></li>
-        <li><button class='btn' data-action='next' id='btn-next'><span></span></button></li>
-      </ul>
-    </div>
 
-  </div>
-
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
-
-  <!-- // <script src='libs/jquery/jquery-2.1.4.min.js'></script> -->
-  <script src='resources/js/jaudio.min.js'></script>
-
-</body>
 </html>

@@ -1,32 +1,33 @@
-.jAudio--player
-  .jAudio--ui
+.jAudio
+  &--ui
 
-  .jAudio--status-bar
+  &--status-bar
 
-  .jAudio--controls
+  &--controls
     li
       button
         span
           &:before, &:after
             +transition("border-color")
 
-  .jAudio--thumb
+  &--thumb
     +transition(all, .5s)
 
-  .jAudio--time
+  &--time
     *
-    .jAudio--time-elapsed
-    .jAudio--time-total
+    &-elapsed
+    &-total
 
-  .jAudio--details
-  .jAudio--progress-bar
-    .jAudio--progress-bar-wrapper
-    .jAudio--progress-bar-played
+  &--details
+
+  &--progress-bar
+    &-wrapper
+    &-played
       +transition(all, .2s)
-    .jAudio--progress-bar-pointer
+    &-pointer
 
-  .jAudio--playlist
-    .jAudio--playlist-item
+  &--playlist
+    &-item
       +transition(all, .5s)
       *
         +transition

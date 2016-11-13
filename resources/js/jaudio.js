@@ -1,18 +1,19 @@
-// # ----- Script info:
+// Script info:
 // - Author: Michael Mammoliti
 // - Name: jAudio.js
-// - Version: 0.2
+// - Version: 0.2.1
 // - js dipendencies: jQuery
-// - Release date: 25 November 2015
+// - First Release: 25 November 2015
+// - Last Update: 13 November 2016
 // - GitHub: https://github.com/MichaelMammoliti/jAudio.js
 
-// # ----- Contact info
+// Contact info
 // - GitHub: https://github.com/MichaelMammoliti
 // - Mail: mammoliti.michael@gmail.com
 // - Twitter: @MichMammoliti
 
-// # ----- License Info
-// - Released under the GPL v3 license.
+// License Info
+// - Released under the MIT license.
 
 (function($){
 
@@ -71,10 +72,9 @@
       self.domAudio.volume = 0.05
     },
 
-    play: function()
+    play: function($btn)
     {
-      var self        = this,
-          playButton  = self.$domControls.find("#btn-play");
+      var self = this;
 
       self.domAudio.play();
 
@@ -86,17 +86,17 @@
       self.currentState = "play";
 
       // change id
-      playButton.data("action", "pause");
-      playButton.attr("id", "btn-pause");
+      $btn.data("action", "pause");
+      $btn.removeClass("jAudio--control-play");
+      $btn.addClass("jAudio--control-pause");
 
       // activate
-      playButton.toggleClass('active');
+      $btn.toggleClass('active');
     },
 
-    pause: function()
+    pause: function($btn)
     {
-      var self        = this,
-          playButton  = self.$domControls.find("#btn-pause");
+      var self        = this;
 
       self.domAudio.pause();
       clearInterval(self.timer);
@@ -104,15 +104,16 @@
       self.currentState = "pause";
 
       // change id
-      playButton.data("action", "play");
-      playButton.attr("id", "btn-play");
+      $btn.data("action", "play");
+      $btn.removeClass("jAudio--control-pause");
+      $btn.addClass("jAudio--control-play");
 
       // activate
-      playButton.toggleClass('active');
+      $btn.toggleClass('active');
 
     },
 
-    stop: function()
+    stop: function($btn)
     {
       var self = this;
 
@@ -126,7 +127,7 @@
       self.currentState = "stop";
     },
 
-    prev: function()
+    prev: function($btn)
     {
       var self  = this,
           track;
@@ -137,7 +138,8 @@
 
       self.changeTrack(track);
     },
-    next: function()
+
+    next: function($btn)
     {
       var self = this,
           track;
@@ -148,7 +150,6 @@
 
       self.changeTrack(track);
     },
-
 
     preLoadTrack: function()
     {
@@ -181,17 +182,20 @@
       var self = this;
 
       // - controls events
-      self.$domControls.on("click", "button", function()
+      self.$domControls.on("click", ".jAudio--control", function()
       {
-        var action = $(this).data("action");
+
+        var $btn    = $(this),
+            action  = $btn.data("action")
+        ;
 
         switch( action )
         {
-          case "prev": self.prev.call(self); break;
-          case "next": self.next.call(self); break;
-          case "pause": self.pause.call(self); break;
-          case "stop": self.stop.call(self); break;
-          case "play": self.play.call(self); break;
+          case "prev": self.prev.call(self, $btn); break;
+          case "next": self.next.call(self, $btn); break;
+          case "pause": self.pause.call(self, $btn); break;
+          case "stop": self.stop.call(self, $btn); break;
+          case "play": self.play.call(self, $btn); break;
         };
 
       });
@@ -273,7 +277,6 @@
       return word;
     },
 
-
     highlightTrack: function()
     {
       var self      = this,
@@ -303,7 +306,7 @@
           template += "</p>";
 
 
-      $(".jAudio--details").html(template);
+      self.$domDetails.html(template);
 
     },
 
@@ -326,9 +329,9 @@
 
         template += "<div class='jAudio--playlist-thumb'><img src='"+ thumb +"'></div>";
 
-        template += "<div class='jAudio--playlist-meta-text'>";
-        template += "<h4>" + trackName + "</h4>";
-        template += "<p>" + trackArtist + "</p>";
+        template += "<div class='jAudio--playlist-meta'>";
+        template += "<p class='jAudio--playlist-meta-track-name'>" + trackName + "</p>";
+        template += "<p class='jAudio--playlist-meta-track-artist'>" + trackArtist + "</p>";
         template += "</div>";
         // template += "<div class='jAudio--playlist-track-duration'>" + trackDuration + "</div>";
         template += "</div>";
@@ -400,7 +403,6 @@
       self.$domTotalTime.text( audioTime );
     },
 
-
     updateThumb: function()
     {
       var self = this,
@@ -432,31 +434,3 @@
   }
 
 })(jQuery)
-
-var t = {
-  playlist: [
-    {
-      file: "resources/tracks/01.mp3",
-      thumb: "resources/thumbs/01.jpg",
-      trackName: "Dusk",
-      trackArtist: "Tobu & Syndec",
-      trackAlbum: "Single",
-    },
-    {
-      file: "resources/tracks/02.mp3",
-      thumb: "resources/thumbs/02.jpg",
-      trackName: "Blank",
-      trackArtist: "Disfigure",
-      trackAlbum: "Single",
-    },
-    {
-      file: "resources/tracks/03.mp3",
-      thumb: "resources/thumbs/03.jpg",
-      trackName: "Fade",
-      trackArtist: "Alan Walker",
-      trackAlbum: "Single",
-    }
-  ]
-}
-
-$(".jAudio--player").jAudio(t);
